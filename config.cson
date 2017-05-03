@@ -1,0 +1,15 @@
+"*":
+  core:
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    invisibles: {}
+  "exception-reporting":
+    userId: "63296fb7-dbd2-4d67-a374-4ced51af7b61"
+  fonts:
+    fontFamily: "Anka/Coder"
+  "platformio-ide-terminal":
+    core: {}
