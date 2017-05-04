@@ -1,1 +1,1 @@
-# atom_settings
+# dotfiles
