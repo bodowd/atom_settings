@@ -1,4 +1,4 @@
-"/////////////////////////////////////////
+"////////////////////////////////////////
 "  Vundle Plugins
 "/////////////////////////////////////////
 
@@ -21,7 +21,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'christoomey/vim-tmux-navigator' " navigate tmux w/ ctrl-j etc
-
+Plugin 'chriskempson/base16-vim'
 " **** All plugins must be added above this line:
 call vundle#end()		" required
 filetype plugin indent on	" required
@@ -33,7 +33,7 @@ filetype plugin indent on	" required
 "------------ vim-airline settings
 set laststatus=2
 set ttimeoutlen=10
-let g:airline_theme='powerlineish'
+let g:airline_theme='base16_oceanicnext'
 "------------ NERDTree settings
 let NERDTreeIgnore=['\.pyc$', '\~$']
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -63,8 +63,16 @@ endif
 "Colors
 "////////////////////////////////////////
 syntax on
-colorscheme zenburn
+"colorscheme zenburn
 
+" base16
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+let base16colorspace=256
+colorscheme base16-ocean
 "/////////////////////////////////////////
 " Python settings
 "/////////////////////////////////////////
