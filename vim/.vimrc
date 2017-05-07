@@ -1,6 +1,6 @@
 "////////////////////////////////////////
 "  Vundle Plugins
-"/////////////////////////////////////////
+"////////////////////////////////////////
 
 set nocompatible	" required
 filetype off 		" required
@@ -13,51 +13,59 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " #### Add new plugins here:
-Plugin 'tmhedberg/SimpylFold'
+Plugin 'tmhedberg/SimpylFold' " code folding
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'w0rp/ale'
+Plugin 'w0rp/ale' "syntax stuff
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'christoomey/vim-tmux-navigator' " navigate tmux w/ ctrl-j etc
-Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim' " color schemes
 " **** All plugins must be added above this line:
 call vundle#end()		" required
 filetype plugin indent on	" required
 "////////////////////////////////////////
 "End Vundle plugins 
 "////////////////////////////////////////
-
-"/////////////////////////////////////////
-"------------ vim-airline settings
-set laststatus=2
-set ttimeoutlen=10
-let g:airline_theme='base16_oceanicnext'
-"------------ NERDTree settings
-let NERDTreeIgnore=['\.pyc$', '\~$']
-nnoremap <C-n> :NERDTreeToggle<CR>
-			
-"------------  Autoreload .vimrc
+"////////// Vim settings
+set number
+set backspace=2     " makes backspace work
+set wildmode=longest,list  " autocompletion for vim command mode
+set wildmenu
+"//////////  Autoreload .vimrc
 augroup myvimrchooks
 	au!
 	autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END	
 
-"------------ Split navigation
+"///////// the following enables clipboard/yanking,etc in vim when using tmux
+if $TMUX == ''
+	set clipboard+=unnamed
+endif
+"////////// Split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"------------ Vim settings
-set number
-set backspace=2     " makes backspace work
+"////////// end vim settings /////////////
+"/////////////////////////////////////////
 
-"" the following enables clipboard/yanking,etc in vim when using tmux
-if $TMUX == ''
-	set clipboard+=unnamed
-endif
+"////////// vim-airline settings
+set laststatus=2
+set ttimeoutlen=10
+let g:airline_theme='base16_oceanicnext'
+
+"//////////  NERDTree settings
+let NERDTreeIgnore=['\.pyc$', '\~$']
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+"////////// jedi settings
+set completeopt-=preview " turns of docstring window popup during completion
+let g:jedi#show_call_signatures = 0
+let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
+
 
 "////////////////////////////////////////
 "Colors
@@ -76,11 +84,11 @@ colorscheme base16-ocean
 "/////////////////////////////////////////
 " Python settings
 "/////////////////////////////////////////
-"------------  code folding
+"///////////// code folding
 set foldmethod=indent
 set foldlevel=99
 let python_highlight_all=1
-"------------
+"/////////////
 set encoding=utf-8
 
 au BufNewFile,BufRead *.py
