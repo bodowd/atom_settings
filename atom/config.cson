@@ -1,9 +1,14 @@
 "*":
+  "base16-syntax":
+    scheme: "Ocean"
   core:
+    disabledPackages: [
+      "keybinding-resolver"
+    ]
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
-      "base16-tomorrow-dark-theme"
+      "base16-syntax"
     ]
   editor:
     invisibles: {}

@@ -45,18 +45,18 @@ atom-text-editor .cursor {
 
 
 // // change the current cursor-line background color
-// based on vim mode
-// atom-text-editor.is-focused.editor {
-//   .cursor-line {
-//     // background: rgba(64, 64, 37, 5);
-//     background: fadeout(@normal-bg, 80%);
-//   }
-//   &.insert-mode {
-//     .cursor-line {
-//       background: fadeout(@insert-bg, 90%);
-//     }
-//   }
-// }
+// // based on vim mode
+atom-text-editor.is-focused.editor {
+  .cursor-line {
+    background: rgba(64, 64, 37, 5);
+    background: fadeout(@normal-bg, 85%);
+  }
+  &.insert-mode {
+    .cursor-line {
+      background: fadeout(@insert-bg, 90%);
+    }
+  }
+}
 
 
 // vim mode in the status bar at the bottom
@@ -89,13 +89,13 @@ atom-text-editor .cursor {
 }
 
 // change cursor color in normal mode
-// atom-text-editor.vim-mode-plus.normal-mode.is-focused.editor {
-//   .cursor {
-//     background-color: @normal-bg;
-//   }
-// }
+atom-text-editor.vim-mode-plus.normal-mode.is-focused.editor {
+  .cursor {
+    background-color: @normal-bg;
+  }
+}
 
 // visual mode and selected text
-// atom-text-editor.editor .selection .region {
-//   background-color: fadeout(@visual-bg, 75%);
-// }
+atom-text-editor.editor .selection .region {
+  background-color: fadeout(@visual-bg, 75%);
+}
