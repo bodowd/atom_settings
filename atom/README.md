@@ -1,4 +1,4 @@
 # atom_settings
 
 
-windows: C:\Users\USER-NAME\.atom
+windows: C:\Users\USER-NAME\\.atom
