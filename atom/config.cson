@@ -1,9 +1,11 @@
 "*":
+  Hydrogen: {}
   "base16-syntax":
     scheme: "Ocean"
   core:
     disabledPackages: [
       "keybinding-resolver"
+      "Hydrogen"
     ]
     telemetryConsent: "no"
     themes: [
@@ -11,10 +13,22 @@
       "base16-syntax"
     ]
   editor:
+    fontFamily: "Consolas "
     invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
   "exception-reporting":
     userId: "63296fb7-dbd2-4d67-a374-4ced51af7b61"
   fonts:
     fontFamily: "Anka/Coder"
+  minimap:
+    disablePythonDocLinks: true
   "platformio-ide-terminal":
     core: {}
+  "vim-mode-plus":
+    ignoreCaseForSearch: true
+  "vim-mode-plus-ex-mode":
+    notifiedUseExMode: true
+  welcome:
+    showOnStartup: false
