@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " #### Add new plugins here:
 Plugin 'tmhedberg/SimpylFold' " code folding
-Plugin 'w0rp/ale' " syntax checking   make sure to install the linter (i.e. pylint)
+"Plugin 'w0rp/ale' " syntax checking   make sure to install the linter (i.e. pylint)
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -58,14 +58,15 @@ set laststatus=2
 set ttimeoutlen=10
 let g:airline_theme='base16_oceanicnext'
 
-call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-let g:airline_section_error = airline#section#create_right(['ALE'])
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-"let g:ale_python_pylint_use_global = 1
+"call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+"call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+"let g:airline_section_error = airline#section#create_right(['ALE'])
+"let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+""let g:ale_python_pylint_use_global = 1
 "highlight clear ALEErrorSign
 "highlight clear ALEWarningSign
-let g:ale_sign_column_always = 1
+"let g:ale_sign_column_always = 1
+
 "//////////  NERDTree settings
 let NERDTreeIgnore=['\.pyc$', '\~$']
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -86,6 +87,7 @@ nnoremap <C-c><C-v> :SlimuxREPLConfigure<CR>
 "Colors
 "////////////////////////////////////////
 syntax on
+
 "colorscheme zenburn
 
 " base16
