@@ -4,7 +4,7 @@
 call plug#begin('~/.vim/plugged')
 " #### Add new plugins here:
 Plug 'tmhedberg/SimpylFold' " code folding
-Plug  'w0rp/ale' " syntax checking   make sure to install the linter (i.e. pip install flake8)
+Plug 'w0rp/ale' " syntax checking   make sure to install the linter (i.e. pip install flake8)
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'zchee/deoplete-jedi'
@@ -15,7 +15,8 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator' " navigate tmux w/ ctrl-j etc
 Plug 'chriskempson/base16-vim' " color schemes
-Plug 'epeli/slimux'
+Plug 'rakr/vim-two-firewatch'
+Plug 'jacoborus/tender.vim'
 "Plug 'liuchengxu/eleline.vim'
 "////////////////////////////////////////
 call plug#end() 
@@ -28,9 +29,13 @@ set wildmode=longest,list  " autocompletion for vim command mode
 set wildmenu
 let mapleader=","
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,space:·
+"set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,space:·
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+
 set incsearch
 set nohls
+autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions-=o " turns off continuation of commenting on next line
+
 "//////////  Autoreload .vimrc
 augroup myvimrchooks
 	au!
@@ -55,27 +60,11 @@ set laststatus=2
 set ttimeoutlen=10
 "let g:airline_theme='base16_spacemacs'
 "let g:airline_theme='zenburn'
-let g:airline_theme='violet'
-let g:airline_section_b = '%{strftime("%H:%M")}'
+"let g:airline_theme='base16_ocean'
+"let g:airline_theme='wombat'
 
-"let g:Powerline_symbols='fancy' "let g:airline#extensions#tabline#enabled=1
-"let g:airline#extensions#tabline#buffer_idx_mode = 1
-"let g:airline#extensions#tabline#buffer_nr_show = 1
-"let g:airline#extensions#tabline#buffer_nr_format = '%s:'
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#fnamecollapse = 1
-"let g:airline#extensions#tabline#fnametruncate = 0
-"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-"let g:airline#extensions#default#section_truncate_width = {
-"            \ 'b': 79,
-"            \ 'x': 60,
-"            \ 'y': 88,
-"            \ 'z': 45,
-"            \ 'warning': 80,
-"            \ 'error': 80,
-"            \ }
-" Distinct background color is enough to discriminate the warning and
-" error information.
+" display the time
+let g:airline_section_b = '%{strftime("%H:%M")}'
 
 "////////// Airline/ALE settings
 call airline#parts#define_function('ALE', 'ALEGetStatusLine')
@@ -114,17 +103,33 @@ let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
 "Colors
 "////////////////////////////////////////
 syntax on
-colorscheme space-vim-dark
-"colorscheme zenburn
 
-" base16
+"""" space-vim-dark --- use source code pro font if you like
+"colorscheme space-vim-dark
+"let g:airline_theme='violet'
+"--------------------------------
+
+"colorscheme zenburn
+"colorscheme github
+"colorscheme tender
+"colorscheme octocat
+
+"""" base16 ---------
 "if filereadable(expand("~/.vimrc_background"))
-"  let base16colorspace=256
-"  source ~/.vimrc_background
+  "let base16colorspace=256
+  "source ~/.vimrc_background
 "endif
-"
 "let base16colorspace=256
-"colorscheme base16-eighties
+
+"""""
+if (has("termguicolors"))
+ set termguicolors
+endif
+""" two-firewatch --------------
+set background=dark
+colo two-firewatch
+let g:airline_theme='twofirewatch'
+""""""""""""""""""""""""""""""""
 "/////////////////////////////////////////
 " Python settings
 "/////////////////////////////////////////
@@ -138,6 +143,8 @@ setlocal cindent
 setlocal smarttab
 setlocal formatoptions=croql
 setlocal number
+
+"set colorcolumn=80
 "///////////// code folding
 set foldmethod=indent
 set foldlevel=99
@@ -145,12 +152,3 @@ let python_highlight_all=1
 "/////////////
 set encoding=utf-8
 
-"au BufNewFile,BufRead *.py
-"	\ set tabstop=4 |
-"	\ set softtabstop=4 |
-"	\ set shiftwidth=4 |
-"	\ set textwidth=79 |
-"	\ set expandtab |
-"	\ set autoindent |
-"	\ set fileformat=unix
-"
