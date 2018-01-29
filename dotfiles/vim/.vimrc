@@ -19,7 +19,7 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'jacoborus/tender.vim'
 "Plug 'liuchengxu/eleline.vim'
 "////////////////////////////////////////
-call plug#end() 
+call plug#end()
 "////////////////////////////////////////
 
 "////////// Vim settings
@@ -36,11 +36,20 @@ set incsearch
 set nohls
 autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions-=o " turns off continuation of commenting on next line
 
+" delete trailing whitespace
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+" use comma+w to execute func to delete trailing whitespace
+noremap <leader>w :call DeleteTrailingWS()<CR>
+
 "//////////  Autoreload .vimrc
 augroup myvimrchooks
 	au!
 	autocmd bufwritepost .vimrc source ~/.vimrc
-augroup END	
+augroup END
 
 "///////// the following enables clipboard/yanking,etc in vim when using tmux
 "set clipboard +=unnamedplus
@@ -85,7 +94,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 "////////// deoplete settings
 let g:deoplete#enable_at_startup = 1
 " use tab to cycle through autocomplete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>" 
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "////////// jedi settings
 set completeopt-=preview " turns off docstring window popup during completion
@@ -94,9 +103,9 @@ let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
 
 "////////// slimux settings
 " send the line then move down one line
-"nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>j 
+"nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>j
 "" moves to the next line after visual mode
-"vnoremap <C-c><C-c> :SlimuxREPLSendSelection<CR><Esc>'>j 
+"vnoremap <C-c><C-c> :SlimuxREPLSendSelection<CR><Esc>'>j
 "nnoremap <C-c><C-v> :SlimuxREPLConfigure<CR>
 
 "////////////////////////////////////////
