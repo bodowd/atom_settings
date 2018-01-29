@@ -1,6 +1,6 @@
 
 # changing terminal display
-export PS1="Bing \w $ "
+export PS1="Bing \w \e[0;31m$ \e[m " # begin color code \e[ColorCodem ... \e[m   ends color code
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
@@ -15,6 +15,8 @@ fi
 alias ll='ls -l'
 alias la='ls -la'
 alias jp='jupyter notebook'
+alias up='cd ..'
+
 #alias tmux='tmux -2'
 
 
