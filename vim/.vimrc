@@ -14,15 +14,20 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator' " navigate tmux w/ ctrl-j etc
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+" colorschemes
 Plug 'chriskempson/base16-vim' " color schemes
 Plug 'rakr/vim-two-firewatch'
-Plug 'jacoborus/tender.vim'
-"Plug 'liuchengxu/eleline.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'atelierbram/Base2Tone-vim'
+Plug 'hzchirs/vim-material'
 "////////////////////////////////////////
 call plug#end()
 "////////////////////////////////////////
 
 "////////// Vim settings
+set mouse=a
 set number
 set backspace=2     " makes backspace work
 set wildmode=longest,list  " autocompletion for vim command mode
@@ -100,7 +105,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 set completeopt-=preview " turns off docstring window popup during completion
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
-
+let g:jedi#force_py_version = 3
 "////////// slimux settings
 " send the line then move down one line
 "nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>j
@@ -113,31 +118,41 @@ let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
 "////////////////////////////////////////
 syntax on
 
+
 """" space-vim-dark --- use source code pro font if you like
 "colorscheme space-vim-dark
 "let g:airline_theme='violet'
 "--------------------------------
 
 "colorscheme zenburn
-"colorscheme github
-"colorscheme tender
-"colorscheme octocat
 
-"""" base16 ---------
+"""" base16 --------- matches whatever set by base16 shell command
 "if filereadable(expand("~/.vimrc_background"))
   "let base16colorspace=256
   "source ~/.vimrc_background
 "endif
 "let base16colorspace=256
 
-"""""
+"colorscheme base16-github
+
+""" other themes --------------
+""""" Turn this on for the other colorschemes
 if (has("termguicolors"))
  set termguicolors
 endif
-""" two-firewatch --------------
+""""" Nord colorschme
+"set background=dark
+"colorscheme nord
+"let g:airline_theme='base16_ocean'
+ "enable highlighting which somehow gets lost in nord colorscheme
+"highlight Visual cterm=reverse ctermbg=NONE
+
+"""" Material Theme
+" for the palenight flavor of the material theme
+"let g:material_style='palenight'
 set background=dark
-colo two-firewatch
-let g:airline_theme='twofirewatch'
+colorscheme vim-material
+let g:airline_theme='material'
 """"""""""""""""""""""""""""""""
 "/////////////////////////////////////////
 " Python settings
