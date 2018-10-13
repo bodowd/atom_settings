@@ -14,15 +14,19 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator' " navigate tmux w/ ctrl-j etc
-Plug 'chriskempson/base16-vim' " color schemes
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+" colorschemes
 Plug 'rakr/vim-two-firewatch'
-Plug 'jacoborus/tender.vim'
-"Plug 'liuchengxu/eleline.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'atelierbram/Base2Tone-vim'
+Plug 'hzchirs/vim-material'
 "////////////////////////////////////////
-call plug#end() 
+call plug#end()
 "////////////////////////////////////////
 
 "////////// Vim settings
+set mouse=a
 set number
 set backspace=2     " makes backspace work
 set wildmode=longest,list  " autocompletion for vim command mode
@@ -36,11 +40,20 @@ set incsearch
 set nohls
 autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions-=o " turns off continuation of commenting on next line
 
+" delete trailing whitespace
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+" use comma+w to execute func to delete trailing whitespace
+noremap <leader>w :call DeleteTrailingWS()<CR>
+
 "//////////  Autoreload .vimrc
 augroup myvimrchooks
 	au!
 	autocmd bufwritepost .vimrc source ~/.vimrc
-augroup END	
+augroup END
 
 "///////// the following enables clipboard/yanking,etc in vim when using tmux
 "set clipboard +=unnamedplus
@@ -85,24 +98,19 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 "////////// deoplete settings
 let g:deoplete#enable_at_startup = 1
 " use tab to cycle through autocomplete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>" 
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "////////// jedi settings
 set completeopt-=preview " turns off docstring window popup during completion
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
-
-"////////// slimux settings
-" send the line then move down one line
-"nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>j 
-"" moves to the next line after visual mode
-"vnoremap <C-c><C-c> :SlimuxREPLSendSelection<CR><Esc>'>j 
-"nnoremap <C-c><C-v> :SlimuxREPLConfigure<CR>
+let g:jedi#force_py_version = 3
 
 "////////////////////////////////////////
 "Colors
 "////////////////////////////////////////
 syntax on
+
 
 """" space-vim-dark --- use source code pro font if you like
 "colorscheme space-vim-dark
@@ -110,30 +118,28 @@ syntax on
 "--------------------------------
 
 "colorscheme zenburn
-"colorscheme github
-"colorscheme tender
-"colorscheme octocat
 
-"""" base16 ---------
-"if filereadable(expand("~/.vimrc_background"))
-  "let base16colorspace=256
-  "source ~/.vimrc_background
-"endif
-"let base16colorspace=256
-
-"""""
+""" other themes --------------
+""""" Turn this on for the other colorschemes
 if (has("termguicolors"))
  set termguicolors
 endif
-""" two-firewatch --------------
+""""" Nord colorschme
+"set background=dark
+"colorscheme nord
+"let g:airline_theme='base16_ocean'
+ "enable highlighting which somehow gets lost in nord colorscheme
+"highlight Visual cterm=reverse ctermbg=NONE
+
+"""" Material Theme
+" for the palenight flavor of the material theme
+"let g:material_style='palenight'
 set background=dark
-colo two-firewatch
-let g:airline_theme='twofirewatch'
+colorscheme vim-material
+let g:airline_theme='material'
 """"""""""""""""""""""""""""""""
 "/////////////////////////////////////////
 " Python settings
-"/////////////////////////////////////////
-"/////////////////////////////////////////
 "/////////////////////////////////////////
 "
 setlocal tabstop=4
