@@ -17,7 +17,6 @@ Plug 'christoomey/vim-tmux-navigator' " navigate tmux w/ ctrl-j etc
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 " colorschemes
-Plug 'chriskempson/base16-vim' " color schemes
 Plug 'rakr/vim-two-firewatch'
 Plug 'arcticicestudio/nord-vim'
 Plug 'atelierbram/Base2Tone-vim'
@@ -106,12 +105,6 @@ set completeopt-=preview " turns off docstring window popup during completion
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0	" pop up only occurs when ctrl-space is typed
 let g:jedi#force_py_version = 3
-"////////// slimux settings
-" send the line then move down one line
-"nnoremap <C-c><C-c> :SlimuxREPLSendLine<CR>j
-"" moves to the next line after visual mode
-"vnoremap <C-c><C-c> :SlimuxREPLSendSelection<CR><Esc>'>j
-"nnoremap <C-c><C-v> :SlimuxREPLConfigure<CR>
 
 "////////////////////////////////////////
 "Colors
@@ -125,15 +118,6 @@ syntax on
 "--------------------------------
 
 "colorscheme zenburn
-
-"""" base16 --------- matches whatever set by base16 shell command
-"if filereadable(expand("~/.vimrc_background"))
-  "let base16colorspace=256
-  "source ~/.vimrc_background
-"endif
-"let base16colorspace=256
-
-"colorscheme base16-github
 
 """ other themes --------------
 """"" Turn this on for the other colorschemes
@@ -156,8 +140,6 @@ let g:airline_theme='material'
 """"""""""""""""""""""""""""""""
 "/////////////////////////////////////////
 " Python settings
-"/////////////////////////////////////////
-"/////////////////////////////////////////
 "/////////////////////////////////////////
 "
 setlocal tabstop=4
