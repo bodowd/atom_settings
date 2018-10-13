@@ -1,3 +1,3 @@
 # Useful Bash stuff
 
-https://bconnelly.net/working-with-csvs-on-the-command-line/
+https://github.com/bodowd/code_snippets.git
