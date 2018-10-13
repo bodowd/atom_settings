@@ -1,0 +1,7 @@
+base16-syntax
+vim-mode-plus
+vim-mode-plus-ex-mode
+Hydrogen
+linter
+linter-python-pep8
+minimap
